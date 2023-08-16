@@ -4,9 +4,17 @@ document.getElementById("btn-deposit").addEventListener('click', function () {
     const newDepositAmount = parseFloat(newDepositAmountString);
 
     depositField.value = '';
-
+    // validation
     if (isNaN(newDepositAmount)) {
-        alert('please provide a valid amound')
+        alert('please provide a valid amount')
+        return;
+    }
+    if (typeof newDepositAmount !== "number") {
+        alert('please provide valid amount');
+        return;
+    }
+    if (newDepositAmount <= 0) {
+        alert('please provide valid amount');
         return;
     }
 

@@ -4,9 +4,17 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const newWithdrawAmount = parseFloat(newWithdrawAmountString);
 
     withdrawField.value = '';
-
+    // validation
     if (isNaN(newWithdrawAmount)) {
         alert('please provide a valid amound')
+        return;
+    }
+    if (typeof newWithdrawAmount !== "number") {
+        alert('please provide valid amount');
+        return;
+    }
+    if (newWithdrawAmount <= 0) {
+        alert('please provide valid amount');
         return;
     }
 
@@ -18,10 +26,8 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const previousBalanceTotalString = blanceTotalElement.innerText;
     const previousBalanceTotal = parseFloat(previousBalanceTotalString);
 
-
-
     if (newWithdrawAmount > previousBalanceTotal) {
-        alert('baap er bank e eto tk nai re fokir');
+        alert("you don't have enough money for withdraw");
         return;
     }
 
@@ -30,6 +36,5 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
 
     const newBalanceTotal = previousBalanceTotal - newWithdrawAmount;
     blanceTotalElement.innerText = newBalanceTotal;
-
 
 })
